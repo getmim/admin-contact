@@ -1,0 +1,65 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white navbar-shadow">
+    <div class="navbar-multiline mr-auto">
+        <span class="navbar-brand" href="#0">Contact Details</span>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?= $this->router->to('adminHome') ?>">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?= $this->router->to('adminContact') ?>">Contact</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Details</li>
+            </ol>
+        </nav>
+    </div>
+</nav>
+
+<div class="container p-3">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><?= $contact->subject->safe ?></h5>
+                    <div>
+                        <h6 class="card-subtitle text-muted">
+                            <?= $contact->fullname->safe ?>
+                            ( <em><?= $contact->email ?></em> )
+                        </h6>
+                        <small class="text-muted"><?= $contact->created->format('M d, Y H:i') ?></small>
+                    </div>
+                    <hr>
+                    <div class="card-text" style="font-size:.8rem;"><?= nl2br($contact->content->safe) ?></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <?php if($form): ?>
+                        <form method="POST" class="row needs-validation main" novalidate>
+                            <div class="col-md-12">
+                                <?= $form->csrfField('noob') ?>
+                                <?= $form->field('reply') ?>
+                                <div class="text-right">
+                                    <button class="btn btn-primary">Reply</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <small>This content will be sent to the email of related contact.</small>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                        <div>
+                            <h6 class="card-subtitle text-muted">
+                                <?= $contact->user->fullname->safe ?>
+                            </h6>
+                            <small class="text-muted"><?= $contact->replyed->format('M d, Y H:i') ?></small>
+                        </div>
+                        <hr>
+                        <div class="card-text" style="font-size:.8rem;"><?= $contact->reply ?></div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
