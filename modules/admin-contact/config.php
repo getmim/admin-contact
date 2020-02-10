@@ -2,7 +2,7 @@
 
 return [
     '__name' => 'admin-contact',
-    '__version' => '0.0.1',
+    '__version' => '0.0.2',
     '__git' => 'git@github.com:getmim/admin-contact.git',
     '__license' => 'MIT',
     '__author' => [
@@ -81,7 +81,8 @@ return [
                     'label' => 'Contact',
                     'icon' => '<i class="fas fa-file-signature"></i>',
                     'priority' => 0,
-                    'route' => ['adminContact']
+                    'route' => ['adminContact'],
+                    'perms' => 'manage_contact'
                 ]
             ]
         ]
