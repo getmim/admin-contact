@@ -24,7 +24,7 @@
                 <?php $csrf = $form->csrfToken(); ?>
                 <ul class="list-group list-group-flush card mb-3">
                     <?php foreach($contacts as $contact): ?>
-                        <?php $seen = !is_null($contact->seen->time); ?>
+                        <?php $seen = $contact->seen && !is_null($contact->seen->time); ?>
                         <li class="list-group-item<?= ($seen?' list-group-item-seen':'') ?>">
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1">
